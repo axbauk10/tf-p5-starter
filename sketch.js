@@ -12,7 +12,7 @@ This example uses p5 preload function to create the classifier
 // Classifier Variable
 let classifier;
 // Model URL
-let imageModelURL = 'https://teachablemachine.withgoogle.com/models/heW_TXQe/model.json';
+let imageModelURL = 'https://teachablemachine.withgoogle.com/models/XTkpG2cG/model.json';
 
 // Video
 let video;
@@ -65,6 +65,13 @@ function gotResult(error, results) {
   // The results are in an array ordered by confidence.
   // console.log(results[0]);
   label = results[0].label;
+  if(label =="book") {
+    label = "open the book"
+  } else if(label == "paper") {
+    label = "write on paper"
+  } else { 
+    label = "nothing"
+  }
   // Classifiy again!
   classifyVideo();
 }
